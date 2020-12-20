@@ -15,6 +15,8 @@ import "prismjs/components/prism-typescript"
 export const theme = oceanicNext;
 
 import mppImage from './images/kotlin-multiplatform.png';
+import kotlinAllTheThings from './images/kotlin-all-the-things.jpg';
+import notCrazy from './images/not-crazy.jpg';
 
 
 # <ins>PO*K*</ins>*otlin*
@@ -405,5 +407,45 @@ public interface IComparer<in T>  {
 
 ---
 
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+# Runtime
+
+Kotlin/JVM is just a set of JARs in runtime
+
+* kotlin-stdlib *2.1MB*
+* kotlin-stdlib-common *193KB*
+* kotlin-stdlib-jdk7 *25KB*
+* kotlin-stdlib-jdk8 *16KB*
+
+Nothing more than adding these dependencies needs to be done
+
+---
+
+How far can we go?
+
+---
+
+## Step 1
+
+# ⌥ + ↑ + ⌘ + K
+
+<img src={kotlinAllTheThings} style="height: 300px"/>
+
+---
+
+## Step 2
+
+### Kotlin exclusive frameworks
+
+* Ktor
+* Exposed
+* ?
+
+---
+
+## Step 3
+
+### An entire new game using Kotlin MPP
+
+100.0% Kotlin Code (including build scripts)
+
+<img src={notCrazy} style="height: 300px"/>
