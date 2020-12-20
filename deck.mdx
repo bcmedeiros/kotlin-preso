@@ -23,7 +23,7 @@ import notCrazy from './images/not-crazy.jpg';
 
 ---
 
-# Kotlin History
+## A little bit of history
 
 * 2010 Internal project started aiming for Java replacement
 * 2011 JetBrains unveiled Project Kotlin
@@ -36,11 +36,12 @@ import notCrazy from './images/not-crazy.jpg';
 
 <CodeSurferColumns>
 
-<Step title="2020 / 2021 - Multiplatform language with JVM/JS/LLVM support">
+<Step title="2020 / 2021" subtitle="Multiplatform language with JVM/JS/LLVM support">
 
 <img src={mppImage} style="height: 600px"/>
 
 ```kotlin
+// supported platforms
 jvm()
 js()
 wasm32()
@@ -67,7 +68,7 @@ Features
 
 <Step title="Operator overload" subtitle="Kotlin // Java">
 
-```kotlin title=Kotlin
+```kotlin 3,4,10,11
 // dates
 val n = LocalDate.now()
 val t = n + Duration.ofDays(1)
@@ -82,7 +83,7 @@ if (p1 >= p2)
   println(":)")
 ```
 
-```java
+```java 3,4,10,11
 // dates
 final var n = LocalDate.now();
 final var t = n.plus(Duration.ofDays(1));
@@ -145,6 +146,24 @@ const s = `I'm ${a} yo`
 ```
 
 ```java
+var a = 1;
+var s = "I'm " + a + " yo";
+```
+
+</Step>
+<Step title="String interpolation" subtitle="Kotlin // Typescript // Java">
+
+```kotlin 2[14:16]
+val a = 1
+val s = "I'm $a yo"
+```
+
+```typescript 2[16:19]
+const a = 1
+const s = `I'm ${a} yo`
+```
+
+```java 2[14:22]
 var a = 1;
 var s = "I'm " + a + " yo";
 ```
@@ -449,3 +468,17 @@ How far can we go?
 100.0% Kotlin Code (including build scripts)
 
 <img src={notCrazy} style="height: 300px"/>
+
+---
+
+## We are not alone
+
+* [ING](https://medium.com/ing-blog/introducing-kotlin-at-ing-a-long-but-rewarding-story-1bfcd3dc8da0)
+* [Adobe](https://medium.com/adobetech/streamlining-server-side-app-development-with-kotlin-be8cf9d8b61a)
+* [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)
+
+Case book: https://kotlinlang.org/lp/mobile/case-studies/
+
+---
+
+Thank you
