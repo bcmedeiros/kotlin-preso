@@ -21,7 +21,7 @@ import mppImage from './images/kotlin-multiplatform.png';
 
 ---
 
-# History
+# Kotlin History
 
 * 2010 Internal project started aiming for Java replacement
 * 2011 JetBrains unveiled Project Kotlin
@@ -34,7 +34,7 @@ import mppImage from './images/kotlin-multiplatform.png';
 
 <CodeSurferColumns>
 
-<Step title="MPP">
+<Step title="2020 / 2021 - Multiplatform language with JVM/JS/LLVM support">
 
 <img src={mppImage} style="height: 600px"/>
 
@@ -61,13 +61,70 @@ Features
 
 ---
 
-Operator overload
-comprarison (date, big decimal)
+<CodeSurferColumns>
 
+<Step title="Operator overload" subtitle="Kotlin // Java">
+
+```kotlin title=Kotlin
+// dates
+val n = LocalDate.now()
+val t = n + Duration.ofDays(1)
+if (t > n)
+  println(":)")
+
+// BigDecimals
+val p1 = 1.toBigDecimal()
+val p2 = 3.toBigDecimal()
+val s = p1 + p2
+if (p1 >= p2)
+  println(":)")
+```
+
+```java
+// dates
+final var n = LocalDate.now();
+final var t = n.plus(Duration.ofDays(1));
+if (t.compareTo(n) > 0)
+  System.out.println(":(");
+
+// BigDecimals
+final var p1 = BigDecimal.valueOf(1);
+final var p2 = BigDecimal.valueOf(3);
+final var s = p1.add(p2);
+if (p1.compareTo(p2) >= 0)
+  System.out.println(":(");
+```
+
+</Step>
+
+</CodeSurferColumns>
 
 ---
 
-multi line string
+<CodeSurferColumns>
+
+<Step title="Multiline String" subtitle="Java // Kotlin">
+
+```java title=Java
+private static final String UPSERT_BOOKMARK =
+  "INSERT INTO bookmark(process_manager, position) "
+    + "VALUES (?, ?) "
+    + "ON CONFLICT (process_manager) DO "
+    + "UPDATE SET position = excluded.position";
+```
+
+```kotlin title=Kotlin
+private const val UPSERT_BOOKMARK = """
+  INSERT INTO bookmark(process_manager, position)
+  VALUES (?, ?)
+  ON CONFLICT (process_manager) DO
+  UPDATE SET position = excluded.position
+"""
+```
+
+</Step>
+
+</CodeSurferColumns>
 
 ---
 
@@ -94,7 +151,6 @@ public class Person {
 </Step>
 
 </CodeSurferColumns>
-
 
 ---
 
