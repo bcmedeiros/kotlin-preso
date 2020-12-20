@@ -1,15 +1,153 @@
+
+import { Invert, Split, SplitRight, Horizontal, FullScreenCode } from 'mdx-deck'
+
 import {
   CodeSurfer,
   CodeSurferColumns,
   Step,
 } from "code-surfer";
-import { github, vsDark } from "@code-surfer/themes";
+import { github, oceanicNext, vsDark } from "@code-surfer/themes";
+import "prismjs/components/prism-java"
+import "prismjs/components/prism-kotlin"
+import "prismjs/components/prism-csharp"
+import "prismjs/components/prism-typescript"
 
-export const theme = vsDark;
+export const theme = oceanicNext;
 
-# Hello 👋
+import mppImage from './images/kotlin-multiplatform.png';
 
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+
+# <ins>PO*K*</ins>*otlin*
+
+---
+
+# History
+
+* 2010 Internal project started aiming for Java replacement
+* 2011 JetBrains unveiled Project Kotlin
+* 2012 Open-sourced
+* 2016 Kotlin 1.0 and LTS commitment
+* 2017 Google announced support on Android
+* 2019 Kotlin as the main language on Android
+
+---
+
+<CodeSurferColumns>
+
+<Step title="MPP">
+
+<img src={mppImage} style="height: 600px"/>
+
+```kotlin
+jvm()
+js()
+wasm32()
+android()
+androidNativeArm64()
+ios(); watchos(); tvos()
+macosX64()
+linuxX64(); linuxArm64()
+winX64()
+```
+
+</Step>
+<Step></Step>
+
+</CodeSurferColumns>
+
+---
+
+Features
+
+---
+
+Operator overload
+comprarison (date, big decimal)
+
+
+---
+
+multi line string
+
+---
+
+<CodeSurferColumns>
+
+<Step title="Class fields in constructor syntax" subtitle="Kotlin // Typescript">
+
+```kotlin title=Kotlin
+class Person(
+  val name: String,
+  val dob: LocalDate,
+)
+```
+
+```typescript
+public class Person {
+  constructor(
+    readonly name: string,
+    readonly dob: Date,
+  ) { }
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+
+---
+
+<CodeSurferColumns>
+
+<Step title="Null-safe property navigation" subtitle="Kotlin // Typescript">
+
+```kotlin
+class Person(
+  val name: String,
+  val dob: LocalDate?,
+)
+
+val p: Person? = findPerson(1L)
+
+// nullable int
+val month1: Int? = p?.dob?.month
+
+// non-nullable int
+val month2: Int = p?.dob?.month
+  ?: 1
+
+// throw as an expression
+val month3: Int = p?.dob?.month
+  ?: throw IllegalStateException("...")
+
+```
+
+
+```typescript
+public class Person {
+  constructor(
+    readonly name: string,
+    readonly dob: Date | null,
+  ) { }
+}
+
+const p: Person | null = findPerson(1);
+
+// nullable int
+const month1: number | null = p?.dob?.getMonth()
+
+// non-nullable int
+const month2: number = p?.dob?.getMonth()
+  ?? 1;
+
+// throw is not an expression in TS
+
+```
+
+</Step>
+
+</CodeSurferColumns>
 
 ---
 
@@ -98,7 +236,7 @@ function incididunt(ipsum, ut = 1) {
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[oceanicNext, github]}>
 
 <Step>
 
