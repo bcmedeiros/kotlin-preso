@@ -103,7 +103,7 @@ if (p1.compareTo(p2) >= 0)
 
 <CodeSurferColumns>
 
-<Step title="Multiline String" subtitle="Java // Kotlin">
+<Step title="Multiline (raw) Strings" subtitle="Java // Kotlin">
 
 ```java title=Java
 private static final String UPSERT_BOOKMARK =
@@ -198,7 +198,7 @@ class Person {
 
 <CodeSurferColumns>
 
-<Step title="Class fields in constructor syntax" subtitle="Kotlin // Typescript">
+<Step title="Compact constructors" subtitle="Kotlin // Typescript">
 
 ```kotlin title=Kotlin
 class Person(
@@ -322,133 +322,81 @@ const month2: number = p?.dob?.getMonth()
 
 ---
 
-<CodeSurfer>
+<CodeSurferColumns>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
+<Step title="Extension Functions" subtitle="Kotlin // C#">
+
+```kotlin
+public inline fun <T> Collection<T>.random(): T {
+  // pick one random number
 }
 
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
 
-  if (!sit || ut < 1) {
-    return [];
-  }
 
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
 
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
 
-  return aliqua;
-}
+
+// using
+val r = listOf(1, 2, 3).random()
 ```
 
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
+
+```csharp
+public static class MyExtensions
+{
+  public static void Random<T>(this List<T> list)
+  {
+    // pick one random number
+  }
 }
 
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
 
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```diff 1[10:14],2[15:19],3[22:27],10:12
-
-```
-
-</CodeSurfer>
-
----
-
-<CodeSurferColumns themes={[oceanicNext, github]}>
-
-<Step>
-
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
+// using
+var r = new List<int>() { 1, 2, 3 }.Random();
 ```
 
 </Step>
 
-<Step>
+</CodeSurferColumns>
 
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
+---
 
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
+<CodeSurferColumns>
+
+<Step title="Generics Variance" subtitle="Kotlin // C#">
+
+```kotlin
+// invariance
+interface MutableList<E> {
+  operator fun add(e: E)
+}
+
+// covariance
+interface List<out E> : Collection<E> {
+  operator fun get(index: Int): E
+}
+
+// contravariance
+interface Comparable<in T> {
+  operator fun compareTo(other: T): Int
+}
 ```
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
+```csharp
+// invariance
+public interface List<T> {
+  public void Add(T item);
+}
 
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
+// covariance
+public interface IEnumerable<out T> {
+  public T Max();
+}
+
+// contravariance
+public interface IComparer<in T>  {
+  public int Compare(T x, T y);
+}
 ```
 
 </Step>
