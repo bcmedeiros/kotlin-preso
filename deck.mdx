@@ -155,6 +155,49 @@ var s = "I'm " + a + " yo";
 
 <CodeSurferColumns>
 
+<Step title="Properties support" subtitle="Java // Kotlin">
+
+```java
+public class Person {
+  private String name;
+  private LocalDate dob;
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public LocalDate getDob() {
+    return dob;
+  }
+  public void setDob(LocalDate dob) {
+    this.dob = dob;
+  }
+  public Integer age() {
+    return dob.until(LocalDate.now()).getYears();
+  }
+}
+```
+
+```kotlin
+class Person {
+  var name: String = ""
+  lateinit var dob: LocalDate
+  val age: Int
+    get() {
+      return dob.until(LocalDate.now()).years
+    }
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
 <Step title="Class fields in constructor syntax" subtitle="Kotlin // Typescript">
 
 ```kotlin title=Kotlin
@@ -170,6 +213,53 @@ public class Person {
     readonly name: string,
     readonly dob: Date,
   ) { }
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
+<Step title="Data classes" subtitle="Java // Kotlin">
+
+```java
+public class Person {
+  private String name;
+  private LocalDate dob;
+  public Person(String name) {
+    this.name = name;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public LocalDate getDob() {
+    return dob;
+  }
+  public void setDob(LocalDate dob) {
+    this.dob = dob;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Person person = (Person) o;
+    return name.equals(person.name);
+  }
+  @Override public int hashCode() {
+    return Objects.hash(name);
+  }
+}
+```
+
+```kotlin
+data class Person(var name: String) {
+  lateinit var dob: LocalDate
 }
 ```
 
