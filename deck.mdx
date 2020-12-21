@@ -14,6 +14,7 @@ import "prismjs/components/prism-typescript"
 
 export const theme = oceanicNext;
 
+import growth from './images/growth.png';
 import mppImage from './images/kotlin-multiplatform.png';
 import kotlinAllTheThings from './images/kotlin-all-the-things.jpg';
 import notCrazy from './images/not-crazy.jpg';
@@ -31,6 +32,18 @@ import notCrazy from './images/not-crazy.jpg';
 * 2016 Kotlin 1.0 and LTS commitment
 * 2017 Google announced support on Android
 * 2019 Kotlin as the main language on Android
+
+---
+
+##  Growth
+
+<img src={growth} style="height: 300px"/>
+
+Kotlin is currently the fastest growing language in the GitHub
+
+2.6x year-over-year
+
+[source](https://medium.com/xorum-io/x-reasons-to-build-your-startup-with-kotlin-in-2020-bd12bb14ea86), [source](https://developer.android.com/kotlin/adopt-for-large-teams)
 
 ---
 
@@ -64,9 +77,71 @@ Features
 
 ---
 
+
 <CodeSurferColumns>
 
-<Step title="Operator overload" subtitle="Kotlin // Java">
+<Step title="Functions as first-class citizens" subtitle="Kotlin // Typescript">
+
+```kotlin
+// class are a top-level elements
+class C
+
+// so are functions
+fun f(s1: String): LocalDate {
+  // function impl
+}
+
+// higher-order functions
+fun <E> sum(
+    items: List<E>,
+    mapper: (s: E) -> Double,
+) : Double {
+  return items.map { mapper(it) }.sum()
+}
+```
+
+```typescript
+
+
+
+
+public function f(s1: string): Date {
+  // function impl
+}
+
+public function sum<E>(
+  items: Array<E>,
+  mapper: (s: E) => number,
+) : number {
+  return items.map(e => mapper(e))
+    .reduce((a, b) => a + b)
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
+<Step title="Operator overload" subtitle="Java // Kotlin">
+
+```java 3,4,10,11
+// dates
+final var n = LocalDate.now();
+final var t = n.plus(Duration.ofDays(1));
+if (t.compareTo(n) > 0)
+System.out.println(":(");
+
+// BigDecimals
+final var p1 = BigDecimal.valueOf(1);
+final var p2 = BigDecimal.valueOf(3);
+final var s = p1.add(p2);
+if (p1.compareTo(p2) >= 0)
+System.out.println(":(");
+```
 
 ```kotlin 3,4,10,11
 // dates
@@ -83,21 +158,6 @@ if (p1 >= p2)
   println(":)")
 ```
 
-```java 3,4,10,11
-// dates
-final var n = LocalDate.now();
-final var t = n.plus(Duration.ofDays(1));
-if (t.compareTo(n) > 0)
-  System.out.println(":(");
-
-// BigDecimals
-final var p1 = BigDecimal.valueOf(1);
-final var p2 = BigDecimal.valueOf(3);
-final var s = p1.add(p2);
-if (p1.compareTo(p2) >= 0)
-  System.out.println(":(");
-```
-
 </Step>
 
 </CodeSurferColumns>
@@ -108,7 +168,7 @@ if (p1.compareTo(p2) >= 0)
 
 <Step title="Multiline (raw) Strings" subtitle="Java // Kotlin">
 
-```java title=Java
+```java
 private static final String UPSERT_BOOKMARK =
   "INSERT INTO bookmark(process_manager, position) "
     + "VALUES (?, ?) "
@@ -116,7 +176,7 @@ private static final String UPSERT_BOOKMARK =
     + "UPDATE SET position = excluded.position";
 ```
 
-```kotlin title=Kotlin
+```kotlin
 private const val UPSERT_BOOKMARK = """
   INSERT INTO bookmark(process_manager, position)
   VALUES (?, ?)
@@ -426,16 +486,43 @@ public interface IComparer<in T>  {
 
 ---
 
+<CodeSurferColumns>
+
+<Step title="Sealed classes and when expressions" subtitle="Kotlin">
+
+```kotlin
+sealed class Expr
+data class Const(val number: Double) : Expr()
+data class Sum(val e1: Expr, val e2: Expr) : Expr()
+object NotANumber : Expr()
+```
+
+```kotlin
+fun eval(expr: Expr): Double = when(expr) {
+  is Const -> expr.number
+  is Sum -> eval(expr.e1) + eval(expr.e2)
+  NotANumber -> Double.NaN
+  // the `else` clause is not required
+  // because we've covered all the cases
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
 # Runtime
 
-Kotlin/JVM is just a set of JARs in runtime
+Kotlin/JVM is just a set of JARs
 
 * kotlin-stdlib *2.1MB*
 * kotlin-stdlib-common *193KB*
 * kotlin-stdlib-jdk7 *25KB*
 * kotlin-stdlib-jdk8 *16KB*
 
-Nothing more than adding these dependencies needs to be done
+We need nothing more than adding these dependencies
 
 ---
 
@@ -475,6 +562,7 @@ How far can we go?
 
 * [ING](https://medium.com/ing-blog/introducing-kotlin-at-ing-a-long-but-rewarding-story-1bfcd3dc8da0)
 * [Adobe](https://medium.com/adobetech/streamlining-server-side-app-development-with-kotlin-be8cf9d8b61a)
+* [Atlasian](https://speakerdeck.com/mtvarga/future-of-jira-software-powered-by-kotlin-javaday-istanbul-2020)
 * [Netflix](https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23)
 
 Case book: https://kotlinlang.org/lp/mobile/case-studies/
