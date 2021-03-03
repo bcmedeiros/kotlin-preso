@@ -309,11 +309,14 @@ public class Person {
 
 ```java
 public class Person {
+
   private String name;
   private LocalDate dob;
+
   public Person(String name) {
     this.name = name;
   }
+
   public String getName() {
     return name;
   }
@@ -326,6 +329,7 @@ public class Person {
   public void setDob(LocalDate dob) {
     this.dob = dob;
   }
+
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -339,7 +343,9 @@ public class Person {
 ```
 
 ```kotlin
-data class Person(var name: String) {
+data class Person(
+  var name: String
+) {
   lateinit var dob: LocalDate
 }
 ```
@@ -504,6 +510,9 @@ fun eval(expr: Expr): Double = when(expr) {
   NotANumber -> Double.NaN
   // the `else` clause is not required
   // because we've covered all the cases
+
+  // adding an new enum entry makes
+  // the compilation fail on when expressions
 }
 ```
 
@@ -542,8 +551,10 @@ How far can we go?
 
 ### Kotlin exclusive frameworks
 
-* Ktor
+* Ktor Server
+* Ktor Client
 * Exposed
+* KorGE
 * ?
 
 ---
