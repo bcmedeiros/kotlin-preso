@@ -1,4 +1,4 @@
-# <ins>PO*K*</ins>*otlin*
+# *Kotlin*
 
 This is a presentation with a brief description of the Kotlin language and how we could possibly use it in POK.
 
